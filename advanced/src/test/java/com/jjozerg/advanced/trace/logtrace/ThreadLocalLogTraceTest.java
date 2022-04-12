@@ -1,0 +1,38 @@
+package com.jjozerg.advanced.trace.logtrace;
+
+import com.jjozerg.advanced.trace.TraceStatus;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
+
+/**
+ * packageName : com.jjozerg.advanced.trace.logtrace
+ * fileName : ThreadLocalLogTraceTest
+ * author : joguk
+ * date : 2022/04/12
+ * description :
+ * ===========================================================
+ * DATE AUTHOR NOTE
+ * 2022/04/12 joguk 최초 생성
+ * -----------------------------------------------------------
+ */
+@Slf4j
+public class ThreadLocalLogTraceTest {
+
+    ThreadLocalLogTrace trace = new ThreadLocalLogTrace();
+
+    @Test
+    void begin_end_level2() {
+        TraceStatus status1 = trace.begin("hello1");
+        TraceStatus status2 = trace.begin("hello2");
+        trace.end(status2);
+        trace.end(status1);
+    }
+
+    @Test
+    void begin_exception_level2() {
+        TraceStatus status1 = trace.begin("hello1");
+        TraceStatus status2 = trace.begin("hello2");
+        trace.exception(status2, new IllegalStateException());
+        trace.exception(status1, new IllegalStateException());
+    }
+}
