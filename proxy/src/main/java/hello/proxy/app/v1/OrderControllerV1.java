@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping
 @ResponseBody
 public interface OrderControllerV1 {
-    @GetMapping("/v1/requset")
+    @GetMapping("/v1/request")
     String requset(@RequestParam("itemId") String itemId);
 
     @GetMapping("/v1/no-log")
